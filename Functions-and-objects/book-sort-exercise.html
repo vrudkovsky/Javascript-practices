@@ -94,14 +94,18 @@
                 }
             ];
 
-        let badBooks = [];
-        let goodBooks = [];
+        // let badBooks = [];
+        // let goodBooks = [];
+        //
+        // for (let i = 0; i < books.length; i++){
+        //     if(books[i].author === "Донцова") {
+        //         badBooks.push(books[i])
+        //     } else goodBooks.push(books[i]);
+        // }
 
-        for (let i = 0; i < books.length; i++){
-            if(books[i].author === "Донцова") {
-                badBooks.push(books[i])
-            } else goodBooks.push(books[i]);
-        }
+        let goodBooks = books.filter((item) => item.author !== "Донцова");
+        let badBooks = books.filter((item) => item.author === "Донцова");
+
         console.log('Bad books', badBooks);
         console.log('God books', goodBooks);
 
