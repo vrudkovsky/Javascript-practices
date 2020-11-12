@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spam Exercise</title>
+</head>
+
+<body>
+    <!-- Imagine a situation - you need to assess whether a user's comment on the site is lexically unacceptable (that is, it contains words that cannot be used, for example: “Collect huge winnings in our casino in your browser….”). It is logical that for this you need to check if the user's comment on the site contains too many spam words (for example, 1-2 words “free” are ok, but 3 or more are already a clear sign of spam). To do this, you need to write a function (specifically a function) isSpam, which will take 3 arguments:
+    - the string entered by the user;
+    - a word, an excess of which is considered spam (for example, “winning”);
+    - the number of repetitions of a word that is considered spam (for example, 3 - that is, if the word “win” occurs 1-2 times in a line, this is not spam, but if 3 or more, it is spam).
+    And the isSpam function must return true if the specified number of times or more occurs in the passed string, and false if not.
+    In this case, both the comment and the spm word must be entered into the input fields that are written below (input) and the execution of the function must be hung up by clicking on the "Check for spam" button. Output the result of the function to p with the id spam-check-result.
+
+   -->
+
+    <input type="text" id="comment" placeholder="Ваш комментарий">
+    <input type="text" id="spam-word" placeholder="Спам-слово">
+    <button id="send-comment">Проверить на спам</button>
+    <p id="spam-check-result"></p>
+
+    <script>
+        const comment = document.getElementById('comment');
+        const spamWord = document.getElementById('spam-word');
+        const btnSendComment = document.getElementById('send-comment');
+        const result = document.getElementById('spam-check-result');
+
+        const isSpam = (string, word, count) => {
+            let matches = string.split(`${word}`).length -1;
+            return matches >= count;
+        }
+
+        btnSendComment.addEventListener('click', function () {
+            let spam = isSpam(comment.value, spamWord.value, 3);
+            spam === true ? result.append("Spam") : result.append("No spam");
+            setTimeout(function () {
+                result.innerText = "";
+            }, 2000);
+
+        })
+    </script>
+
+</body>
+
+</html>

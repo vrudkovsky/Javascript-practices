@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Japan best men exercise</title>
+</head>
+<body>
+<!--  You have an array of objects (grooms from Japan), each object - characteristics of a potential groom .. Create another array of them - "enviable grooms". A guy with a height over 170 cm or with a salary of more than $ 100,000 per year is considered enviable.
+Using arrow functions is encouraged.
+/*As a result, you should have a new array japanBestMen with the following values:
+
+    const japanBestMen = [{name: "Akechi Mitsihura", height: 180, salary: 20000}, {name: "Oda Nobunaga", height: 165, salary: 200000}, {name: "Mori Motonari", height: 185, salary: 75000}, {name: "Date Masamune", height: 180, salary: 750000}];
+*/
+  -->
+  
+  <script>
+      const japanMen = [
+            {name: "Akechi Mitsihura", height: 180, salary: 20000},
+            {name: "Akechi Mitsihura", height: 169, salary: 11000},
+            {name: "Oda Nobunaga", height: 165, salary: 200000},
+            {name: "Uesugi Kenshin", height: 160, salary: 25000},
+            {name: "Takeda Shingen", height: 165, salary: 80000},
+            {name: "Mori Motonari", height: 185, salary: 75000},
+            {name: "Date Masamune", height: 180, salary: 750000}
+      ];
+
+      const japanBestMen = japanMen.filter(
+          person => person.height > 170 || person.salary > 100000
+      );
+
+      console.log(japanBestMen);
+    </script>
+  
+</body>
+</html>
