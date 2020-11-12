@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 10</title>
+    <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+            crossorigin="anonymous"
+    />
+    <style>
+        .password-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-wrapper {
+            position: relative;
+            width: intrinsic;
+            width: -moz-max-content;
+            width: -webkit-max-content;
+        }
+
+        .input-wrapper input {
+            min-width: 120px;
+            padding: 10px;
+            margin-bottom: 24px;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            right: 10px;
+            top: 12px;
+            color: grey;
+        }
+
+        .btn{
+            width: 150px;
+        }
+        .warning-message{
+            background-color: indianred;
+            color: #fff;
+            font-weight: bold;
+            padding:5px 10px;
+        }
+    </style>
+</head>
+<body>
+<form id="form" class="password-form" action="#" type="POST">
+    <label class="input-wrapper">
+        Ввести пароль
+        <input id="passwordField1" type="password" value=""/>
+        <i id="icon1" class="fas fa-eye icon-password"></i>
+    </label>
+
+    <label id="lb2" class="input-wrapper">
+        Подтвердить пароль
+        <input id="passwordField2" type="password" value=""/>
+        <i id="icon2" class="fas fa-eye icon-password"></i>
+    </label>
+
+    <button id="btn" type="submit" class="btn">Подтвердить</button>
+</form>
+
+<script>
+    let span = document.createElement("span");
+    let form = document.getElementById("form");
+    let selectedI;
+
+    form.onclick = function(event) {
+        let target = event.target;
+        console.dir(event.target);
+        if (target.tagName !== 'I') return;
+        iconChange(target);
+    };
+
+    function iconChange(node) {
+        selectedI = node;
+        let x = selectedI.parentElement.getElementsByTagName('input').item(0);
+        if ( x.type === "text") {
+            x.type = "password";
+            selectedI.classList.remove("fa-eye-slash");
+            selectedI.classList.add("fa-eye");
+        } else {
+            x.type = "text";
+            selectedI.classList.remove("fa-eye");
+            selectedI.classList.add("fa-eye-slash");
+        }
+    }
+
+    document.getElementById("btn").onclick = function (event) {
+        let fieldFirstValue = document.getElementById("passwordField1").value;
+        let fieldSecondValue = document.getElementById("passwordField2").value;
+        if( fieldFirstValue === fieldSecondValue && fieldSecondValue !== "") {
+            alert("You are welcome");
+            span.innerHTML = "";
+            event.preventDefault();
+        } else {
+            event.preventDefault();
+            span.innerHTML = "Нужно ввести одинаковые значения";
+            span.style.color = "red";
+            document.getElementById("btn").before(span);
+        }
+    };
+
+</script>
+</body>
+</html>

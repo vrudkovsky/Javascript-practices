@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 07</title>
+    <style>
+        .timer{
+            width: 250px;
+        }
+
+        .timer span{
+            color: red;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<hr>
+<div class="timer">
+    <div>Очистка страница через: <span id="counter"></span></div>
+</div>
+
+<hr>
+<script>
+    let myArray = ['New York', 'Chicago', 'Frisco', 'Los Angeles', 'Washington', 'Mayami'];
+
+    function getArray(array) {
+        array.map(function callback(currentValue){
+            const li = document.createElement('li');
+            document.body.prepend(li);
+            li.innerText = currentValue;
+        });
+    }
+    getArray(myArray);
+
+    let timeDelay = 5;
+    let counter = document.getElementById('counter');
+    let timer = setInterval(function() {
+        counter.innerHTML = --timeDelay;
+        if (!timeDelay) {
+            clearInterval(timer);
+            document.querySelector("body").style.display='none';
+        }
+    }, 1000);
+    counter.innerHTML = timeDelay;
+</script>
+</body>
+</html>
