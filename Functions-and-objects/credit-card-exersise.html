@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Credit card Exersise</title>
+</head>
+
+<body>
+    <!-- Напишите программу, имитирующую снятие денег с кредитной карты. Для этого:
+Cоздайте объект creditCard, с такими свойствами:
+- количество денег на счету (изначально 10000);
+- пин-код карты (4 любых цифры);
+- количество оставшихся попыток ввода пин-кода (изначально 3, после каждого неправильного введенного кода уменьшается на 1. Если код введен верно -  их снова становится 3)
+- статус карты (изначально - “active”, то есть работает. Если 3 раза подряд неправильно был введен пин-код, он меняется на “disabled”);
+
+Добавьте в объект метод getCash, который будет принимать в себя 2 аргумента: пин-код в виде строки из 4х чисел, и желаемый объем денег, которые владелец карты хочет снять. Метод будет работать так:
+- если статус карты равен "disabled", он возвращает сообщение: “Ваша карта заблокирована, обратитесь в банк для ее разблокировки”;
+- если пин-код не верен, он уменьшает количество попыток ввести пин-код на 1, и если после этого количество попыток ввода пин-кода больше 0 - возвращает строку “Неправильный пин-код! Попробуйте пожалуйста снова!”
+- если пин-код неверен, и количество попыток после уменьшения на 1 стало 0, то он меняет значение свойства СтатусКарты на "disabled"  возвращает строку “Неправильный пин-код! Вы исчерпали количество попыток. Ваша карта заблокирована, обратитесь в банк для ее разблокировки”;
+- если пин-код верен, то: 
+    - если требуемая сумма меньше текущей суммы на счету, уменьшить сумму на счету на желаемую (то есть было 10000 например, человек хочет снять 4000 - осталось 6000), установить счетчик попыток ввести пин-код снова на 3  и вернуть сообщение: “Получите ваши - сумма, которую человек хочет снять-”.
+    - если требуемая сумма превышает остаток на счету, то установить счетчик попыток ввести пин-код снова на 3  и вернуть сообщение: “К сожалению, на вашем счету недостаточно средств”.
+    
+Требуемую сумму, а также пин-код нужно ввести в соответствующие поля (input) внизу, выполнения метода getCash повесить на кнопку “Получить наличные”, а результат выполнения функции вывести в p с id cash-request-result.
+Изящные решения с использованием массивов ответов приветствуются.
+ -->
+ 
+    <input type="password" id="pin-code">
+    <input type="number" id="money-sum">
+    <button id="get-cash">Получить наличные</button>
+    <p id="cash-request-result"></p>
+
+    <script>
+        let pinCode = document.querySelector('#pin-code');
+        let moneySum = document.querySelector('#money-sum');
+        let button = document.querySelector('#get-cash');
+        let result = document.querySelector('#cash-request-result');
+
+        function CreditCard(moneySum, pinCode) {
+            this.moneySum = moneySum;
+            this.pinCode = pinCode;
+            this.attemts = 3;
+            this.cardStatus = 'active'
+        }
+
+        const creditCard = new CreditCard(10000, 1234);
+
+        creditCard.getCash = function (a, b) {
+            if (creditCard.cardStatus === 'disabled') {
+                return "Your card is blocked. Connect to the bank to unblock card";
+            }
+
+            if (+a !== this.pinCode) {
+                this.attemts -= 1;
+                if (this.attemts > 0) {
+                    return "Wrong pin-code. Try again"
+                } else {
+                    this.cardStatus = 'disabled';
+                    return  "Wrong pin code! You have exceeded the number of attempts. Your card is blocked, contact the bank to unblock it"
+                }
+            }
+
+            if (b < this.moneySum) {
+                this.attemts = 3;
+                this.moneySum -= b;
+                return `Take your $${b}`
+            } else {
+                return "Unfortunately, there are not enough funds in your account!";
+            }
+        }
+
+        button.addEventListener("click", function () {
+            result.append(creditCard.getCash(pinCode.value, moneySum.value));
+            setTimeout(function () {
+                result.innerText = "";
+            }, 3000);
+        })
+    </script>
+</body>
+
+</html>
