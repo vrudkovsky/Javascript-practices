@@ -1,29 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Homework 02</title>
-    <script>
-
-        let inputNumber = +prompt('Enter the number divisible by 5: ', '10');
-
-        while (isNaN(inputNumber) || inputNumber === null || inputNumber === '') {
-            inputNumber = +prompt('Enter the number divisible by 5: ', '10');
-        }
-
-        if (inputNumber > 0 && inputNumber < 5) {
-            console.log("Sorry, there is no numbers")
-        } else {
-            for (let i = 0; i <= inputNumber; ++i) {
-                if (i % 5 === 0) console.log(i);
-            }
-        }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-
+    <script src="./script.js"></script>
 </body>
 </html>
