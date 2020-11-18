@@ -20,7 +20,7 @@ let mathResult = function (num1, num2, operation) {
             result = num1 / num2;
             break;
         default:
-            console.log('Error')
+            console.log('Error');
 
     }
 
