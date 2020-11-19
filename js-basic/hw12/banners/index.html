@@ -16,6 +16,24 @@
         flex-wrap: wrap;
         justify-content: space-between;
       }
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        background-color: #0c7d8c;
+        color: #ffffff;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #0b5f6b;
+      }
     </style>
   </head>
   <body>
@@ -25,5 +43,11 @@
       <img src="./img/3.JPG" alt="image of game" class="image-to-show" />
       <img src="./img/4.png" alt="image of game" class="image-to-show" />
     </div>
+    <div class="btn-container">
+      <button class="btn btn-stop">Stop</button>
+      <button class="btn btn-continue">Continue</button>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
