@@ -3,28 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Homework 11</title>
-    <style>
-        .btn-wrapper{
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-        .btn{
-            border: none;
-            border-radius: 20px;
-            min-width: 120px;
-            padding: 7px;
-            color: #fff;
-            font-size: 14px;
-            background-color: #33333a;
-            cursor: pointer;
-        }
-        .btn:active,
-        .btn:focus{
-            outline: none;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <div class="btn-wrapper">
@@ -36,17 +15,6 @@
     <button class="btn">L</button>
     <button class="btn">Z</button>
 </div>
-<script>
-    let buttons = document.querySelectorAll("button");
-
-    document.onkeypress = function (event) {
-        for (let button of buttons) {
-            button.style.backgroundColor = "black";
-            if( event.key.toLowerCase() === button.innerText.toLowerCase()) {
-                button.style.backgroundColor = "blue";
-            }
-        }
-    };
-</script>
+<script src="script.js"></script>
 </body>
 </html>
