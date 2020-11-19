@@ -13,7 +13,7 @@ price.addEventListener('blur', function () {
         priceSpan.remove();
         price.style.backgroundColor='rgba(252, 227, 229, .5)';
         document.querySelector('label').appendChild(warning);
-        warning.innerText="Enter correct price!";
+        warning.innerText="Enter price!";
         warning.classList.add('warning-text');
     } else {
         this.style.borderColor = '';
