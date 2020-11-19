@@ -3,106 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Homework 08</title>
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha256-gvEnj2axkqIj4wbYhPjbWV7zttgpzBVEgHub9AAZQD4=" crossorigin="anonymous" />
-    <style>
-        .main{
-            color: #000000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 auto;
-            padding: 50px;
-            font-family: sans-serif;
-        }
-        .final-price{
-            border-radius: 15px;
-            border: 1px solid #d1d1d1;
-            background-color: #fff;
-            color: #888883;
-            padding: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 10px;
-            position: absolute;
-            top: -30px;
-            right: 0;
-
-        }
-        .close{
-            background-color: transparent;
-            width:16px;
-            height: 16px;
-            border: none;
-            padding:0;
-            margin-left: 6px;
-            cursor: pointer;
-        }
-        #price-input{
-            padding: 10px 7px;
-            border-radius: 2px;
-            border: 1px solid #3e77aa;
-        }
-        label{
-            position: relative;
-        }
-        .warning-text{
-            color: #ff7878;
-            font-weight: 400;
-            position: absolute;
-            top: 50px;
-            right: 0;
-        }
-    </style>
 </head>
 <body>
 <div class="main">
-    <label for="price-input">Price, $: <input id="price-input" type="number"></label>
+    <label for="price-input">Price, $: <input id="price-input"></label>
 </div>
-
-<script>
-    const price = document.getElementById('price-input'),
-        warning = document.createElement('span'),
-        finalPrice = document.createElement('span'),
-        closeButton = document.createElement('button'),
-        closeButtonImg = document.createElement('img');
-
-    price.addEventListener('focus', function makeGreenBorder(){
-        this.style.borderColor = 'rgba(49, 247, 244, .7'});
-
-    price.addEventListener('blur', function (){
-        this.style.borderColor = '';
-        validPrice(this);
-    });
-
-    function validPrice(price) {
-
-        if(parseFloat(price.value) < 0 || isNaN (parseFloat(price.value))){
-            finalPrice.remove();
-            price.style.backgroundColor='rgba(252, 227, 229, .5)';
-            document.querySelector('label').appendChild(warning);
-            warning.innerText="Wrong price!";
-            warning.classList.add('warning-text');
-        }else{
-
-            warning.remove();
-            price.style.backgroundColor='rgba(245, 245, 245, .5)';
-            document.querySelector('label').appendChild(finalPrice);
-            finalPrice.innerText=`Current price: ${parseFloat(price.value)}$`;
-            finalPrice.classList.add('final-price');
-            finalPrice.appendChild(closeButton);
-            closeButton.classList.add('close');
-            closeButton.appendChild(closeButtonImg);
-            closeButtonImg.setAttribute("src", "close.png");
-            closeButtonImg.setAttribute("width", "16px");
-            closeButton.addEventListener('click',()=>{
-                finalPrice.remove();
-                price.value = '';
-                price.style.backgroundColor='';
-            })
-        }
-    }
-
-</script>
+<script src="script.js"></script>
 </body>
 </html>

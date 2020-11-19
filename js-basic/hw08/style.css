@@ -1,0 +1,48 @@
+.main{
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 50px;
+    font-family: sans-serif;
+}
+.span-price{
+    border-radius: 15px;
+    border: 1px solid #d1d1d1;
+    background-color: #fff;
+    color: #888883;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    position: absolute;
+    top: -30px;
+    right: 0;
+
+}
+.close{
+    background-color: transparent;
+    width:16px;
+    height: 16px;
+    border: none;
+    padding:0;
+    margin-left: 6px;
+    cursor: pointer;
+}
+#price-input{
+    padding: 10px 7px;
+    border-radius: 5px;
+    border: 1px solid #3e77aa;
+}
+label{
+    position: relative;
+}
+.warning-text{
+    color: #ff7878;
+    font-weight: 400;
+    position: absolute;
+    top: 50px;
+    right: 0;
+}
