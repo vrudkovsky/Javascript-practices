@@ -1,39 +1,31 @@
-const imgs = document.querySelectorAll('.image-to-show');
-const imgsArr = [ ...imgs];
-const btnStop = document.querySelector('.btn-stop');
-const btnContinue = document.querySelector('.btn-continue');
+let buttonStop = document.createElement("button"),
+    buttonContinue = document.createElement("button"),
+    images = ['img/1.jpg', 'img/2.jpg', 'img/3.JPG', 'img/4.png'],
+    length = images.length,
+    index  = 1;
 
-let counter = 1;
-imgsArr[0].style.display  = 'block';
-const showImages = (arr) => {
-    if (counter > 0) {
-        arr[counter - 1].style.display = 'none';
-    }
+buttonStop.innerHTML = "STOP";
+buttonContinue.innerHTML =  "CONTINUE";
 
-    if (counter === imgsArr.length) {
-        counter = 0;
-    }
+buttonStop.classList.add("button");
+buttonContinue.classList.add("button");
 
-    arr[counter].style.display = 'block';
-    counter++;
+document. querySelector("script").before(buttonStop);
+buttonStop.before(buttonContinue);
+
+buttonContinue.onclick = function (event) {
+    buttonContinue.disabled = true;
+    buttonStop.disabled = false;
+    let interval = setInterval(function() {
+        if(index === length) {
+            index = 0;
+        }
+        document.getElementById('image_id').src = images[index++];
+    }, 2000);
+    buttonStop.onclick = function (event) {
+        buttonContinue.disabled = false;
+        buttonStop.disabled = true;
+        clearInterval(interval);
+    };
 };
-
-let imageSlider = setInterval(showImages, 10000, imgsArr);
-
-let wasClicked = true;
-
-btnStop.addEventListener('click', ()=>{
-    clearInterval(imageSlider);
-    wasClicked = false;
-});
-
-btnContinue.addEventListener('click', ()=>{
-    if (!wasClicked) {
-        imageSlider = setInterval(showImages, 1000, imgsArr);
-    }
-    wasClicked = true;
-});
-
-
-console.log(imgs);
-console.log(imgsArr);
+buttonContinue.onclick();
