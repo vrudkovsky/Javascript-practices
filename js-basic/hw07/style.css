@@ -1,0 +1,8 @@
+.timer{
+    width: 250px;
+}
+
+.timer span{
+    color: red;
+    font-weight: 700;
+}
