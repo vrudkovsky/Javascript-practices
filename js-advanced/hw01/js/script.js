@@ -10,12 +10,18 @@ function Hamburger(size, stuffing) {
     try {
         if (size.size !== 'small' && size.size !== 'large') {
             throw new HamburgerException('Enter the correct size');
+        } else {
+            this._size = size;
         }
         if (stuffing.stuffing !== 'cheese'
             && stuffing.stuffing !== 'salad'
             && stuffing.stuffing !== 'potato') {
             throw new HamburgerException('Enter correct stuffing')
+        } else {
+            this._stuffing = stuffing;
         }
+
+        this._toppings = [];
 
     } catch (err) {
         console.log('Enter correct data, The error is ', err.message);
