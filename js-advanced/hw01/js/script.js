@@ -7,6 +7,19 @@
  * @throws {HamburgerException}  При неправильном использовании
  */
 function Hamburger(size, stuffing) {
+    try {
+        if (size.size !== 'small' && size.size !== 'large') {
+            throw new HamburgerException('Enter the correct size');
+        }
+        if (stuffing.stuffing !== 'cheese'
+            && stuffing.stuffing !== 'salad'
+            && stuffing.stuffing !== 'potato') {
+            throw new HamburgerException('Enter correct stuffing')
+        }
+
+    } catch (err) {
+        console.log('Enter correct data, The error is ', err.message);
+    }
 
 }
 
@@ -86,8 +99,9 @@ Hamburger.prototype.calculateCalories = function () {
  * Подробности хранятся в свойстве message.
  * @constructor
  */
-function HamburgerException () {
-
+function HamburgerException (message = 'No errors!') {
+    this.message = message;
+    console.log('HamburgerException message:', message);
 }
 
 
