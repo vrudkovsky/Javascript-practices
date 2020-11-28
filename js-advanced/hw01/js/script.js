@@ -29,7 +29,7 @@ function Hamburger(size, stuffing) {
 Hamburger.SIZE_SMALL = {size: 'small', price: 50, calories: 20};
 Hamburger.SIZE_LARGE = {size: 'large', price: 100, calories: 40};
 Hamburger.STUFFING_CHEESE = {stuffing: 'cheese', price: 10, calories: 20};
-Hamburger.STUFFING_SALAD = {stuffing: 'cheese',price: 20, calories: 5};
+Hamburger.STUFFING_SALAD = {stuffing: 'salad',price: 20, calories: 5};
 Hamburger.STUFFING_POTATO = {stuffing: 'potato', price: 15, calories: 10};
 Hamburger.TOPPING_MAYO = {topping: 'mayo', price: 20, calories: 5};
 Hamburger.TOPPING_SPICE = {topping: 'spice', price: 15, calories: 0};
