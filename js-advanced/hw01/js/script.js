@@ -137,6 +137,7 @@ function HamburgerException (message = 'No errors!') {
 
 // маленький гамбургер с начинкой из сыра
 let hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
+
 // добавка из майонеза
 hamburger.addTopping(Hamburger.TOPPING_MAYO);
 
